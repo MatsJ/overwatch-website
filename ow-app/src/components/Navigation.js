@@ -28,46 +28,59 @@ const ListItem = styled.li`
     list-style-type: none;
 `;
 
-const StyledLink = styled(NavLink)`
+const activeClassName = 'active';
+
+const StyledNavLink = styled(NavLink).attrs({
+  activeClassName: activeClassName,
+})`
+  &.${activeClassName} {
+    color: rgba(0, 0, 255, 0.8); 
+    background-color: white;
+    padding: 6px;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.37);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.37);
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.37);
+  }
+`
+
+const StyledLink = StyledNavLink.extend`
     color: white;
     text-decoration: none;
     border-radius: 2px;
     padding: 6px;
 `;
 
+const activeStyle = css`
+${props => {
+  if(props.activeStyle) {
+    return `
+    color: rgba(0, 0, 255, 0.8); 
+    background-color: white;
+    padding: 6px;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.37);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.37);
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.37);
+    `;
+  }
+}}
+`;
+
 class Navigation extends Component {
     render() {
-        const activeStyle = css`
-            background-color: white;
-            color: ${baseColor};
-        `;
         return (
                 <Nav>
                     <List>
                         <ListItem>
-                            <StyledLink 
-                                activeStyle={{ 
-                                    color: `rgba(0, 0, 255, 0.8)`, 
-                                    backgroundColor: 'white', 
-                                    padding: '6px'}} to='/heroes'>HEROES</StyledLink>
+                            <StyledLink activeStyle={{activeStyle}} to='/heroes'>HEROES</StyledLink>
                         </ListItem>
                         <ListItem>
-                            <StyledLink activeStyle={{ 
-                                color: `rgba(0, 0, 255, 0.8)`, 
-                                backgroundColor: 'white', 
-                                padding: '6px'}} to='/owl'>OWL</StyledLink>
+                            <StyledLink activeStyle={{activeStyle}} to='/owl'>OWL</StyledLink>
                         </ListItem>
                         <ListItem>
-                            <StyledLink activeStyle={{ 
-                                color: `rgba(0, 0, 255, 0.8)`, 
-                                backgroundColor: 'white', 
-                                padding: '6px'}} to='/patchnotes'>PATCHNOTES</StyledLink>
+                            <StyledLink activeStyle={{activeStyle}} to='/patchnotes'>PATCHNOTES</StyledLink>
                         </ListItem>
                         <ListItem>
-                            <StyledLink activeStyle={{ 
-                                color: `rgba(0, 0, 255, 0.8)`, 
-                                backgroundColor: 'white', 
-                                padding: '6px'}} to='/stats'>STATS</StyledLink>
+                            <StyledLink activeStyle={{activeStyle}} to='/stats'>STATS</StyledLink>
                         </ListItem>
                     </List>
                 </Nav>
