@@ -63,11 +63,12 @@ class App extends Component {
     const isMobile = window.innerWidth <= 700;
     if(isMobile) {
       return (
-        <div className={this.props.className} style={{background: '#ECECEC'}}>
+        <div className={this.props.className}>
         <Header>
           <Navigation/>
           <MobileLogo src={mobilelogo}  alt="logo"/>
         </Header>
+        <p>iwiodjiwqdioqwjiojqwd</p>
       </div>
       );
     } else {
@@ -77,6 +78,7 @@ class App extends Component {
             <Headerlogo src={logo} alt="Logo"/>
             <Navigation/>
           </Header>
+          <p>iwiodjiwqdioqwjiojqwd</p>
         </div>
       );
     }
