@@ -3,15 +3,15 @@ import styled from 'styled-components';
 
 //images
 import bg from './img/owbg.png';
-import mobilelogo from './img/mobilelogo.png';
-import logo from './img/logo.png';
+import mobilelogo from './img/mobilelogo.svg';
+import logo from './img/logo.svg';
 
 // components
 import Navigation from './components/Navigation';
 
 
 
-const baseColor = 'rgba(0, 0, 255, 0.3)';
+export const baseColor = 'rgba(0, 0, 255, 0.3)';
 
 const Header = styled.header`
   height: 550px;
@@ -63,7 +63,7 @@ class App extends Component {
     const isMobile = window.innerWidth <= 700;
     if(isMobile) {
       return (
-        <div className={this.props.className}>
+        <div className={this.props.className} style={{background: '#ECECEC'}}>
         <Header>
           <Navigation/>
           <MobileLogo src={mobilelogo}  alt="logo"/>
