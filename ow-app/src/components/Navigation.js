@@ -35,11 +35,10 @@ const StyledNavLink = styled(NavLink).attrs({
   &.${activeClassName} {
     color: rgba(0, 0, 255, 0.8); 
     background-color: white;
-    padding: 6px;
     -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.37);
     -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.37);
     box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.37);
-    transition: .8s ease;
+    transition: .5s ease;
   }
 `
 
@@ -47,7 +46,7 @@ const StyledLink = StyledNavLink.extend`
     color: white;
     text-decoration: none;
     border-radius: 2px;
-    padding: 6px;
+    padding: 8px;
 `;
 
 class Navigation extends Component {

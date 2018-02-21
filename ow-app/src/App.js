@@ -19,7 +19,7 @@ const Header = styled.header`
 
   @media only screen and (max-width: 700px) {
     height: 220px;
-    font-size: 3.5vw;
+    font-size: 3vw;
   }
 `;
 
