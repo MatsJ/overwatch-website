@@ -13,7 +13,7 @@ import Submenu from './components/Submenu';
 const baseColor = 'rgba(0, 0, 255, 0.3)';
 
 const Header = styled.header`
-  height: 550px;
+  height: 400px;
   background: url(${bg}) no-repeat;
   background-size: cover;
   box-shadow: inset 0 0 0 1000px ${baseColor};

@@ -9,7 +9,7 @@ const StyledMenu = styled.div`
     align-items: center;
     justify-items: center;
     background-color: #FFFFFF;
-    font-size: 1.4vw;
+    font-size: 0.8em;
     margin: auto;
     -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.37);
     -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.37);
@@ -26,7 +26,7 @@ const StyledItems = styled.div`
     border-radius: 2px;
 
     @media only screen and (max-width: 700px) {
-        font-size: 2vw;
+        font-size: 2.4vw;
       }
 `;
 
@@ -37,16 +37,11 @@ const menuItems = [
     'MEDALS'
 ];
 
-function changeBg(e) {
-    e.target.style.backgroundColor = 'rgba(36, 59, 186, .17)';
-    e.target.style.color = 'rgba(0, 0, 255, 0.8)';
-}
-
 const SubMenu = () => {
     return (
         <StyledMenu>
         {menuItems.map(menuItem => 
-            <StyledItems key={menuItem} onClick={changeBg}>
+            <StyledItems key={menuItem}>
                 {menuItem}
             </StyledItems>
         )}
