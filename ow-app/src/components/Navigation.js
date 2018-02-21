@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import React, { Component } from 'react';
-import { baseColor } from '../App';
 import { NavLink } from 'react-router-dom'
 import App from '../App';
 
@@ -40,6 +39,7 @@ const StyledNavLink = styled(NavLink).attrs({
     -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.37);
     -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.37);
     box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.37);
+    transition: .8s ease;
   }
 `
 
@@ -50,37 +50,22 @@ const StyledLink = StyledNavLink.extend`
     padding: 6px;
 `;
 
-const activeStyle = css`
-${props => {
-  if(props.activeStyle) {
-    return `
-    color: rgba(0, 0, 255, 0.8); 
-    background-color: white;
-    padding: 6px;
-    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.37);
-    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.37);
-    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.37);
-    `;
-  }
-}}
-`;
-
 class Navigation extends Component {
     render() {
         return (
                 <Nav>
                     <List>
                         <ListItem>
-                            <StyledLink activeStyle={{activeStyle}} to='/heroes'>HEROES</StyledLink>
+                            <StyledLink to='/heroes'>HEROES</StyledLink>
                         </ListItem>
                         <ListItem>
-                            <StyledLink activeStyle={{activeStyle}} to='/owl'>OWL</StyledLink>
+                            <StyledLink to='/owl'>OWL</StyledLink>
                         </ListItem>
                         <ListItem>
-                            <StyledLink activeStyle={{activeStyle}} to='/patchnotes'>PATCHNOTES</StyledLink>
+                            <StyledLink to='/patchnotes'>PATCHNOTES</StyledLink>
                         </ListItem>
                         <ListItem>
-                            <StyledLink activeStyle={{activeStyle}} to='/stats'>STATS</StyledLink>
+                            <StyledLink to='/stats'>STATS</StyledLink>
                         </ListItem>
                     </List>
                 </Nav>

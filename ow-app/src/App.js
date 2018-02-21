@@ -9,9 +9,7 @@ import logo from './img/logo.svg';
 // components
 import Navigation from './components/Navigation';
 
-
-
-export const baseColor = 'rgba(0, 0, 255, 0.3)';
+const baseColor = 'rgba(0, 0, 255, 0.3)';
 
 const Header = styled.header`
   height: 550px;
@@ -68,7 +66,7 @@ class App extends Component {
           <Navigation/>
           <MobileLogo src={mobilelogo}  alt="logo"/>
         </Header>
-        <p>iwiodjiwqdioqwjiojqwd</p>
+        <p>Heroes will be displayed here</p>
       </div>
       );
     } else {
@@ -78,7 +76,7 @@ class App extends Component {
             <Headerlogo src={logo} alt="Logo"/>
             <Navigation/>
           </Header>
-          <p>iwiodjiwqdioqwjiojqwd</p>
+          <p>Heroes will be displayed here</p>
         </div>
       );
     }
