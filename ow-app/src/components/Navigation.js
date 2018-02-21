@@ -5,15 +5,14 @@ import App from '../App';
 
 
 export const Nav = styled.div`
-    color: #fff;
-    display: grid;
+    color: #fff;    
     margin: 0px;
 `;
 
 const List = styled.ul`
     display: grid;
-    grid-gap: 20px;
-    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 50px;
     align-items: center;
     justify-items: center;
@@ -34,19 +33,23 @@ const StyledNavLink = styled(NavLink).attrs({
 })`
   &.${activeClassName} {
     color: rgba(0, 0, 255, 0.8); 
-    background-color: white;
-    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.37);
-    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.37);
-    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.37);
+    background-color: rgba(231, 81, 73, .17);
     transition: .5s ease;
   }
 `
 
 const StyledLink = StyledNavLink.extend`
-    color: white;
-    text-decoration: none;
-    border-radius: 2px;
+    color: #4F4F4F;
+    cursor: pointer;
+    font-weight: 600;
+    font-style: italic;
     padding: 8px;
+    border-radius: 2px;
+    text-decoration: none;
+
+    @media only screen and (max-width: 700px) {
+        font-size: 1em;
+    }
 `;
 
 class Navigation extends Component {

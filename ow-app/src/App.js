@@ -7,8 +7,8 @@ import mobilelogo from './img/mobilelogo.svg';
 import logo from './img/logo.svg';
 
 // components
-import Navigation from './components/Navigation';
 import Submenu from './components/Submenu';
+import Heroes from './components/Heroes';
 
 const baseColor = 'rgba(0, 0, 255, 0.3)';
 
@@ -19,15 +19,10 @@ const Header = styled.header`
   box-shadow: inset 0 0 0 1000px ${baseColor};
 
   @media only screen and (max-width: 700px) {
-    height: 220px;
+    height: 200px;
     font-size: 3vw;
+    display: flex;
   }
-`;
-
-const MobileLogo = styled.img`
-  display: grid;
-  margin: auto;
-  margin-top: 20px;
 `;
 
 const Headerlogo = styled.img`
@@ -35,55 +30,24 @@ const Headerlogo = styled.img`
     margin: 0 auto;
     display: grid;
     margin-bottom: 20px;
+
+    @media only screen and (max-width: 700px) {
+      width: 230px;
+  }
 `;
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      width: window.innerWidth,
-    };
-  }
-  
-  componentWillMount() {
-    window.addEventListener('resize', this.handleWindowSizeChange);
-  }
-  
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleWindowSizeChange);
-  }
-
-  handleWindowSizeChange = () => {
-    this.setState({width: window.innerWidth});
-  }
-
   render() {
-    const { width } = this.state;
-    const isMobile = window.innerWidth <= 700;
-    if(isMobile) {
-      return (
-        <div className={this.props.className}>
-        <Header>
-          <Navigation/>
-          <MobileLogo src={mobilelogo}  alt="logo"/>
-        </Header>
-        <Submenu/>
-        <p>Heroes will be displayed here</p>
-      </div>
-      );
-    } else {
       return (
         <div className={this.props.className}>
           <Header>
             <Headerlogo src={logo} alt="Logo"/>
-            <Navigation/>
           </Header>
           <Submenu/>
-          <p>Heroes will be displayed here</p>
+          <Heroes />
         </div>
       );
     }
   }
-}
 
 export default App;
