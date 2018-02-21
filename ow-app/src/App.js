@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 //images
-import bg from './img/owbg.png';
+import bg from './img/owbg.jpg';
 import mobilelogo from './img/mobilelogo.svg';
 import logo from './img/logo.svg';
 
