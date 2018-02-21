@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import App from '../App';
 
 
-const Nav = styled.div`
+export const Nav = styled.div`
     color: #fff;
     display: grid;
     margin: 0px;

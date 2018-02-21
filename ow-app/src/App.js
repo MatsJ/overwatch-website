@@ -8,6 +8,7 @@ import logo from './img/logo.svg';
 
 // components
 import Navigation from './components/Navigation';
+import Submenu from './components/Submenu';
 
 const baseColor = 'rgba(0, 0, 255, 0.3)';
 
@@ -66,6 +67,7 @@ class App extends Component {
           <Navigation/>
           <MobileLogo src={mobilelogo}  alt="logo"/>
         </Header>
+        <Submenu/>
         <p>Heroes will be displayed here</p>
       </div>
       );
@@ -76,6 +78,7 @@ class App extends Component {
             <Headerlogo src={logo} alt="Logo"/>
             <Navigation/>
           </Header>
+          <Submenu/>
           <p>Heroes will be displayed here</p>
         </div>
       );
