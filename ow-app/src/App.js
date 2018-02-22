@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Router, Route, Link, IndexRoute, hashHistory, Switch } from 'react-router-dom';
 
 //images
 import bg from './img/owbg.jpg';
@@ -9,6 +10,7 @@ import logo from './img/logo.svg';
 // components
 import Submenu from './components/Submenu';
 import Heroes from './components/Heroes';
+import NotFound from './components/NotFound';
 
 const baseColor = 'rgba(0, 0, 255, 0.3)';
 
@@ -44,7 +46,10 @@ class App extends Component {
             <Headerlogo src={logo} alt="Logo"/>
           </Header>
           <Submenu/>
-          <Heroes />
+          <Switch>
+              <Route exact path='/heroes' component={Heroes} />
+              <Route path='/owl' component={NotFound} />
+          </Switch>
         </div>
       );
     }

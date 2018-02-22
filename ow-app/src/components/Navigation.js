@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
 import App from '../App';
+import Heroes from './Heroes';
 
 
 export const Nav = styled.div`
