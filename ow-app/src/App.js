@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Router, Route, Link, IndexRoute, hashHistory, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 //images
 import bg from './img/owbg.jpg';
-import mobilelogo from './img/mobilelogo.svg';
 import logo from './img/logo.svg';
 
 // components

@@ -1,8 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
-import App from '../App';
-import Heroes from './Heroes';
 
 
 export const Nav = styled.div`
@@ -42,8 +40,7 @@ const StyledNavLink = styled(NavLink).attrs({
 const StyledLink = StyledNavLink.extend`
     color: #4F4F4F;
     cursor: pointer;
-    font-weight: 600;
-    font-style: italic;
+    font-weight: 700;
     padding: 8px;
     border-radius: 2px;
     text-decoration: none;

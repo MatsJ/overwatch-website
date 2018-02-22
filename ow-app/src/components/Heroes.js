@@ -25,6 +25,7 @@ const Herowrapper = styled.div`
     align-content: center;
     background-color: #fff;
     border-radius: 2px;
+    color: #4F4F4F;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     -webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     -moz-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -37,7 +38,17 @@ const HeroImage = styled.img`
 `;
 
 const HeroName = styled.p`
+    font-family: 'Open Sans', sans-serif;
     text-align: center;
+    font-weight: 800;
+    font-size: 1.2em;
+`;
+
+const HeroRole = HeroName.extend`
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    margin-top: 0px;
+    font-size: 1em;
 `;
 
 
@@ -55,6 +66,7 @@ class Heroes extends Component {
                     <Herowrapper key={menuItem.id}>
                         <HeroImage key={menuItem.name} src={menuItem.image} alt={menuItem.name}/>
                         <HeroName>{menuItem.name}</HeroName>
+                        <HeroRole>{menuItem.role}</HeroRole>
                     </Herowrapper>
                 )}
                 
