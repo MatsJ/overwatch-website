@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import heroes from '../heroes.json';
 
-const Herowrapper = styled.div`
+const Container = styled.div`
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(auto-fit, 200px);
@@ -17,7 +17,7 @@ const Herowrapper = styled.div`
     }
 `;
 
-const Hero = styled.div`
+const Herowrapper = styled.div`
     display: grid;
     grid-template-columns: 1;
     grid-template-rows: 1;
@@ -36,23 +36,29 @@ const HeroImage = styled.img`
     transition: ease .5s;
 `;
 
-const array = [];
-for(let i = 0; i<heroes.length; i++) {
-    array.push(heroes[i]);
-}
+const HeroName = styled.p`
+    text-align: center;
+`;
+
+
 
 class Heroes extends Component {
     render() {
+        const heroarray = [];
+            for(let i = 0; i<heroes.length; i++) {
+                heroarray.push(heroes[i]);
+            }
         return(
-            <Herowrapper>
+            <Container>
                 
-                {array.map(menuItem => 
-                    <Hero key={menuItem.id}>
+                {heroarray.map(menuItem => 
+                    <Herowrapper key={menuItem.id}>
                         <HeroImage key={menuItem.name} src={menuItem.image} alt={menuItem.name}/>
-                    </Hero>
+                        <HeroName>{menuItem.name}</HeroName>
+                    </Herowrapper>
                 )}
                 
-            </Herowrapper>
+            </Container>
         )
     }
 }
