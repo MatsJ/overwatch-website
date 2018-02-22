@@ -48,6 +48,8 @@ class App extends Component {
           <Switch>
               <Route exact path='/heroes' component={Heroes} />
               <Route path='/owl' component={NotFound} />
+              <Route path='/patchnotes' component={NotFound} />
+              <Route path='/stats' component={NotFound} />
           </Switch>
         </div>
       );

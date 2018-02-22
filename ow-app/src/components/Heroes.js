@@ -19,22 +19,30 @@ const Container = styled.div`
 
 const Herowrapper = styled.div`
     display: grid;
-    grid-template-columns: 1;
-    grid-template-rows: 1;
+    grid-template-columns: 1fr;
     justify-content: center;
     align-content: center;
     background-color: #fff;
     border-radius: 2px;
     color: #4F4F4F;
+    cursor: pointer;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     -webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     -moz-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+    &:hover {
+        color: rgba(0, 0, 255, 0.8);
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
 `;
 
 const HeroImage = styled.img`
     width: 70px;
     height: 116px;
     transition: ease .5s;
+    display: grid;
+    justify-self: center;
 `;
 
 const HeroName = styled.p`
@@ -42,6 +50,10 @@ const HeroName = styled.p`
     text-align: center;
     font-weight: 800;
     font-size: 1.2em;
+
+    &:hover {
+
+    }
 `;
 
 const HeroRole = HeroName.extend`
@@ -50,8 +62,6 @@ const HeroRole = HeroName.extend`
     margin-top: 0px;
     font-size: 1em;
 `;
-
-
 
 class Heroes extends Component {
     render() {
