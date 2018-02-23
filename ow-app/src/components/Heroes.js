@@ -84,7 +84,7 @@ class Heroes extends Component {
                 heroarray.push(heroes[i]);
             }
         return(
-            <Container transition="fadeIn">
+            <Container transition="fadeIn" delay={20}>
                 {heroarray.map(menuItem => 
                     <Herowrapper key={menuItem.id}>
                         <HeroImage key={menuItem.name} src={menuItem.image} alt={menuItem.name}/>
