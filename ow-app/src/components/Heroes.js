@@ -11,10 +11,9 @@ const Container = styled(Stagger)`
     grid-template-columns: repeat(4, 200px);
     grid-auto-rows: 220px;
     margin-top: 20px;
-    margin-bottom: 20px;
     justify-content: center;
 
-    @media only screen and (max-width: 700px) {
+    @media only screen and (max-width: 1050px) {
         grid-template-columns: repeat(auto-fit, 170px);
         grid-auto-rows: 220px;
     }
@@ -67,17 +66,6 @@ const HeroRole = HeroName.extend`
 `;
 
 class Heroes extends Component {
-    /*
-    constructor(props) {
-        super(props);
-        this.dom = {};
-    }
-    componentDidMount() {
-        this.dom.root = ReactDOM.findDOMNode(this);
-        animation.show(this.dom.root);
-        console.log(this.dom.root);
-    }
-    */
     render() {
         const heroarray = [];
             for(let i = 0; i<heroes.length; i++) {
