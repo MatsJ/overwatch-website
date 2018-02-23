@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "gsap": "^1.20.4",
     "react": "^16.2.0",
+    "react-addons-css-transition-group": "^15.6.2",
+    "react-css-stagger": "0.0.8",
     "react-dom": "^16.2.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",

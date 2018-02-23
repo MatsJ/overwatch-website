@@ -7,3 +7,12 @@ body {
   font-family: 'Roboto', sans-serif;
   background: #ECECEC;
 }
+
+.fadeIn-enter {
+  opacity: 0;
+  transition: 0.5s ease-in-out all;
+}
+
+.fadeIn-enter.fadeIn-enter-active {
+  opacity: 1;
+}

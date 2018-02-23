@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+//import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import heroes from '../heroes.json';
+//import animation from '../animation';
+import Stagger from 'react-css-stagger';
 
-const Container = styled.div`
+const Container = styled(Stagger)`
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(auto-fit, 200px);
+    grid-template-columns: repeat(4, 200px);
     grid-auto-rows: 220px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -33,7 +36,6 @@ const Herowrapper = styled.div`
 
     &:hover {
         color: rgba(0, 0, 255, 0.8);
-        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
         transform: scale(1.05);
     }
 `;
@@ -65,14 +67,24 @@ const HeroRole = HeroName.extend`
 `;
 
 class Heroes extends Component {
+    /*
+    constructor(props) {
+        super(props);
+        this.dom = {};
+    }
+    componentDidMount() {
+        this.dom.root = ReactDOM.findDOMNode(this);
+        animation.show(this.dom.root);
+        console.log(this.dom.root);
+    }
+    */
     render() {
         const heroarray = [];
             for(let i = 0; i<heroes.length; i++) {
                 heroarray.push(heroes[i]);
             }
         return(
-            <Container>
-                
+            <Container transition="fadeIn">
                 {heroarray.map(menuItem => 
                     <Herowrapper key={menuItem.id}>
                         <HeroImage key={menuItem.name} src={menuItem.image} alt={menuItem.name}/>
@@ -80,7 +92,6 @@ class Heroes extends Component {
                         <HeroRole>{menuItem.role}</HeroRole>
                     </Herowrapper>
                 )}
-                
             </Container>
         )
     }
