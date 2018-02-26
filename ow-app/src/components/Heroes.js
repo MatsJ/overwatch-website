@@ -67,13 +67,26 @@ const HeroRole = HeroName.extend`
 `;
 
 class Heroes extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            active: true,
+        }
 
         this.heroDetails = this.heroDetails.bind(this);
     }
-    heroDetails(index) {
-        console.log(index);
+    heroDetails(e, index) {
+        this.setState(prevState => ({
+            active: !prevState.active,
+          }));
+          if(this.state.active) {
+            e.currentTarget.style.backgroundColor = 'aquamarine';
+          } else {
+            e.currentTarget.style.backgroundColor = 'white';
+          }
+          
+          
     }
     render() {
         const heroarray = [];
@@ -83,7 +96,7 @@ class Heroes extends Component {
         return(
             <Container transition="fadeIn" delay={20}>
                 {heroarray.map((menuItem, index) => 
-                    <Herowrapper key={menuItem.id} onClick={this.heroDetails(index)}>
+                    <Herowrapper key={menuItem.id} id={`hero${index}`} onClick={this.heroDetails}>
                         <HeroImage key={menuItem.name} src={menuItem.image} alt={menuItem.name}/>
                         <HeroName>{menuItem.name}</HeroName>
                         <HeroRole>{menuItem.role}</HeroRole>
