@@ -11,6 +11,7 @@ const Container = styled(Stagger)`
     grid-template-columns: repeat(4, 200px);
     grid-auto-rows: 220px;
     margin-top: 20px;
+    margin-bottom: 20px;
     justify-content: center;
 
     @media only screen and (max-width: 1050px) {
@@ -66,6 +67,14 @@ const HeroRole = HeroName.extend`
 `;
 
 class Heroes extends Component {
+    constructor() {
+        super();
+
+        this.heroDetails = this.heroDetails.bind(this);
+    }
+    heroDetails(index) {
+        console.log(index);
+    }
     render() {
         const heroarray = [];
             for(let i = 0; i<heroes.length; i++) {
@@ -73,8 +82,8 @@ class Heroes extends Component {
             }
         return(
             <Container transition="fadeIn" delay={20}>
-                {heroarray.map(menuItem => 
-                    <Herowrapper key={menuItem.id}>
+                {heroarray.map((menuItem, index) => 
+                    <Herowrapper key={menuItem.id} onClick={this.heroDetails(index)}>
                         <HeroImage key={menuItem.name} src={menuItem.image} alt={menuItem.name}/>
                         <HeroName>{menuItem.name}</HeroName>
                         <HeroRole>{menuItem.role}</HeroRole>
