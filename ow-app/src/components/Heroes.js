@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-//import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import heroes from '../heroes.json';
 //import animation from '../animation';
 import Stagger from 'react-css-stagger';
+
+// components
+import Header from './Header';
+import SubMenu from './Submenu';
 
 const Container = styled(Stagger)`
     display: grid;
@@ -53,10 +56,6 @@ const HeroName = styled.p`
     text-align: center;
     font-weight: 800;
     font-size: 1.2em;
-
-    &:hover {
-
-    }
 `;
 
 const HeroRole = HeroName.extend`
@@ -70,40 +69,50 @@ class Heroes extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            active: true,
-        }
+        this.state = { active: true }
 
         this.heroDetails = this.heroDetails.bind(this);
     }
+    componentDidMount() {
+        this.setState((prevState) => ({
+            active: !prevState.active
+          }));      
+    }
     heroDetails(e, index) {
-        this.setState(prevState => ({
-            active: !prevState.active,
-          }));
-          if(this.state.active) {
-            e.currentTarget.style.backgroundColor = 'aquamarine';
-          } else {
-            e.currentTarget.style.backgroundColor = 'white';
-          }
-          
-          
+        const herodivs = Array.from(document.querySelectorAll('.heroes'));
+            for(let value of herodivs) {
+                value.style.backgroundColor = 'white';
+            }
+          let clickedItem = e.currentTarget;
+          let name = clickedItem.getElementsByTagName('p')[0].innerHTML;
+          let role = clickedItem.getElementsByTagName('p')[1].innerHTML;
+          console.log(name, role);
     }
     render() {
         const heroarray = [];
-            for(let i = 0; i<heroes.length; i++) {
-                heroarray.push(heroes[i]);
-            }
+        for(let i = 0; i<heroes.length; i++) {
+            heroarray.push(heroes[i]);
+        }
         return(
+            <div>
+            <Header />
+            <SubMenu />
             <Container transition="fadeIn" delay={20}>
                 {heroarray.map((menuItem, index) => 
-                    <Herowrapper key={menuItem.id} id={`hero${index}`} onClick={this.heroDetails}>
-                        <HeroImage key={menuItem.name} src={menuItem.image} alt={menuItem.name}/>
+                    <Herowrapper 
+                    key={menuItem.id} 
+                    id={`hero${index}`} 
+                    onClick={this.heroDetails} 
+                    className="heroes"
+                    >
+                        <HeroImage key={menuItem.name} src={menuItem.image} alt={menuItem.name} />
                         <HeroName>{menuItem.name}</HeroName>
                         <HeroRole>{menuItem.role}</HeroRole>
                     </Herowrapper>
                 )}
             </Container>
-        )
+            </div>
+        );
     }
 }
 
