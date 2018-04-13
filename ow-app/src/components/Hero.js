@@ -16,7 +16,6 @@ const HeroName = styled.p`
   font-weight: 800;
   font-size: 1.2em;
 `;
-
 const HeroRole = HeroName.extend`
   font-family: "Roboto", sans-serif;
   font-weight: 500;

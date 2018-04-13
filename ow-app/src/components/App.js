@@ -22,13 +22,13 @@ const Container = styled.div`
   }
 `;
 
-const Herowrapper = styled.div`
+const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   justify-content: center;
   align-content: center;
-  background-color: #fff;
   border-radius: 2px;
+  background-color: #fff;
   color: #4f4f4f;
   cursor: pointer;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -45,7 +45,8 @@ const Herowrapper = styled.div`
 
 class App extends Component {
   state = {
-    heroes: {}
+    heroes: {},
+    isActive: true
   };
 
   componentWillMount = () => {
@@ -65,24 +66,49 @@ class App extends Component {
 
     // set new state
     this.setState({ heroes });
-    console.log(this.state.heroes);
+  };
+
+  toggleActive = event => {
+    this.setState({ isActive: !this.state.isActive });
+    let el = event.currentTarget;
+    el.setAttribute("aria-checked", "true");
+
+    const wrappers = document.querySelectorAll(".hello");
+    wrappers.forEach(wrappers => {
+      wrappers.setAttribute("aria-checked", "false");
+      wrappers.style.backgroundColor = "white";
+    });
+
+    if (el.getAttribute("aria-checked") == "true") {
+      el.setAttribute("aria-checked", "false");
+      el.style.backgroundColor = "white";
+    } else {
+      el.setAttribute("aria-checked", "true");
+      el.style.backgroundColor = "pink";
+    }
   };
 
   render() {
+    let bgColor = this.state.isActive ? "white" : "red";
     return (
       <Fragment>
         <Header />
         <Menu addHeroes={this.addHeroes} loadHeroes={this.loadHeroes} />
         <Container>
           {Object.keys(this.state.heroes).map(key => (
-            <Herowrapper key={key}>
+            <Wrapper
+              key={key}
+              onClick={this.toggleActive}
+              aria-checked="false"
+              className={`hello`}
+            >
               <Hero
                 key={key}
                 index={key}
                 details={this.state.heroes[key]}
                 addHeroes={this.addHeroes}
               />
-            </Herowrapper>
+            </Wrapper>
           ))}
         </Container>
       </Fragment>
