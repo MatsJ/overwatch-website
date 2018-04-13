@@ -16,21 +16,14 @@ const HeroName = styled.p`
   font-weight: 800;
   font-size: 1.2em;
 `;
-const HeroRole = HeroName.extend`
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  margin-top: 0px;
-  font-size: 1em;
-`;
 
 class Hero extends React.Component {
   render() {
-    const { name, role, image } = this.props.details;
+    const { name, image } = this.props.details;
     return (
       <Fragment>
         <HeroImage src={image} alt={name} />
         <HeroName>{name}</HeroName>
-        <HeroRole>{role}</HeroRole>
       </Fragment>
     );
   }

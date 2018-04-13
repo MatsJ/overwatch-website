@@ -6,12 +6,12 @@ import sampleHeroes from "../sampleHeroes";
 import Menu from "./Menu";
 import Header from "./Header";
 import Hero from "./Hero";
+import SelectedHero from "./SelectedHero";
 
 const Container = styled.div`
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(4, 200px);
-  grid-auto-rows: 220px;
+  grid-template-columns: repeat(4, 170px);
   margin-top: 20px;
   margin-bottom: 20px;
   justify-content: center;
@@ -31,14 +31,15 @@ const Wrapper = styled.div`
   background-color: #fff;
   color: #4f4f4f;
   cursor: pointer;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
-    0 3px 6px rgba(0, 0, 0, 0.23);
-  -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 
   &:hover {
     color: rgba(0, 0, 255, 0.8);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+      0 3px 6px rgba(0, 0, 0, 0.23);
+    -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+      0 3px 6px rgba(0, 0, 0, 0.23);
     transform: scale(1.05);
   }
 `;
@@ -46,7 +47,7 @@ const Wrapper = styled.div`
 class App extends Component {
   state = {
     heroes: {},
-    isActive: true
+    showComponent: false
   };
 
   componentWillMount = () => {
@@ -72,24 +73,24 @@ class App extends Component {
     this.setState({ isActive: !this.state.isActive });
     let el = event.currentTarget;
     el.setAttribute("aria-checked", "true");
+    el.scrollIntoView();
 
-    const wrappers = document.querySelectorAll(".hello");
+    const wrappers = document.querySelectorAll(".herowrap");
     wrappers.forEach(wrappers => {
       wrappers.setAttribute("aria-checked", "false");
-      wrappers.style.backgroundColor = "white";
     });
 
+    const desc = document.querySelector(".desc");
     if (el.getAttribute("aria-checked") == "true") {
       el.setAttribute("aria-checked", "false");
-      el.style.backgroundColor = "white";
+      desc.style.display = "none";
     } else {
       el.setAttribute("aria-checked", "true");
-      el.style.backgroundColor = "pink";
+      desc.style.display = "block";
     }
   };
 
   render() {
-    let bgColor = this.state.isActive ? "white" : "red";
     return (
       <Fragment>
         <Header />
@@ -100,8 +101,7 @@ class App extends Component {
               key={key}
               onClick={this.toggleActive}
               aria-checked="false"
-              className={`hello`}
-            >
+              className={`herowrap`}>
               <Hero
                 key={key}
                 index={key}
@@ -111,6 +111,7 @@ class App extends Component {
             </Wrapper>
           ))}
         </Container>
+        <SelectedHero details={this.state.heroes} />
       </Fragment>
     );
   }
