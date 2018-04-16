@@ -44,10 +44,18 @@ const Wrapper = styled.div`
   }
 `;
 
+const Description = styled.p`
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  font-size: 1.2em;
+  background-color: pink;
+  margin-left: 1em;
+  margin-right: 2em;
+`;
+
 class App extends Component {
   state = {
-    heroes: {},
-    showComponent: false
+    heroes: {}
   };
 
   componentWillMount = () => {
@@ -73,7 +81,7 @@ class App extends Component {
     this.setState({ isActive: !this.state.isActive });
     let el = event.currentTarget;
     el.setAttribute("aria-checked", "true");
-    el.scrollIntoView();
+    el.scrollIntoView({ block: "start", behavior: "smooth" });
 
     const wrappers = document.querySelectorAll(".herowrap");
     wrappers.forEach(wrappers => {
@@ -81,7 +89,7 @@ class App extends Component {
     });
 
     const desc = document.querySelector(".desc");
-    if (el.getAttribute("aria-checked") == "true") {
+    if (el.getAttribute("aria-checked") === "true") {
       el.setAttribute("aria-checked", "false");
       desc.style.display = "none";
     } else {

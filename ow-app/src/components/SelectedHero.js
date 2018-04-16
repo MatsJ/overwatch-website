@@ -39,11 +39,12 @@ class SelectedHero extends React.Component {
   };
   render() {
     const { name, role, image, description, difficulty } = this.props.details;
+    console.log(difficulty);
     return (
       <Fragment>
         <Wrapper className={`desc`}>
           <Exit src={exit} onClick={this.closeDesc} />
-          <Role>Role</Role>
+          <Role>rrrr</Role>
           <Description>Description</Description>
           <Difficulty>Difficulty</Difficulty>
         </Wrapper>
