@@ -77,9 +77,10 @@ class App extends Component {
     this.setState({ heroes });
   };
 
-  toggleActive = event => {
+  toggleActive = (event, data) => {
     this.setState({ isActive: !this.state.isActive });
     let el = event.currentTarget;
+    console.log("data", data);
     el.setAttribute("aria-checked", "true");
     el.scrollIntoView({ block: "start", behavior: "smooth" });
 
@@ -107,7 +108,9 @@ class App extends Component {
           {Object.keys(this.state.heroes).map(key => (
             <Wrapper
               key={key}
-              onClick={this.toggleActive}
+              onClick={event =>
+                this.toggleActive(event, this.state.heroes[key])
+              }
               aria-checked="false"
               className={`herowrap`}>
               <Hero
