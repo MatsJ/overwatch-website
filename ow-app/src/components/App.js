@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import styled from "styled-components";
 import sampleHeroes from "../sampleHeroes";
+import scrollIntoView from "scroll-into-view";
 
 // components
 import Menu from "./Menu";
@@ -44,15 +45,6 @@ const Wrapper = styled.div`
   }
 `;
 
-const Description = styled.p`
-  font-family: "Open Sans", sans-serif;
-  font-weight: 500;
-  font-size: 1.2em;
-  background-color: pink;
-  margin-left: 1em;
-  margin-right: 2em;
-`;
-
 class App extends Component {
   state = {
     heroes: {}
@@ -80,21 +72,37 @@ class App extends Component {
   toggleActive = (event, data) => {
     this.setState({ isActive: !this.state.isActive });
     let el = event.currentTarget;
-    console.log("data", data);
+    console.log("data", data.role);
     el.setAttribute("aria-checked", "true");
-    el.scrollIntoView({ block: "start", behavior: "smooth" });
+    scrollIntoView(el, {
+      align: {
+        top: 0.06
+      }
+    });
+
+    const role = document.querySelector(".role");
+    const description = document.querySelector(".description");
+    const diff = document.querySelector(".diff");
+    const name = document.querySelector(".name");
+    name.textContent = `${data.name}`;
+    role.textContent = `Role: ${data.role}`;
+    description.textContent = `Description: ${data.description}`;
+    diff.textContent = `Difficulty(1-3): ${data.difficulty}`;
 
     const wrappers = document.querySelectorAll(".herowrap");
     wrappers.forEach(wrappers => {
       wrappers.setAttribute("aria-checked", "false");
     });
 
+    // toggle aria-checked state
     const desc = document.querySelector(".desc");
     if (el.getAttribute("aria-checked") === "true") {
       el.setAttribute("aria-checked", "false");
+      // hide div
       desc.style.display = "none";
     } else {
       el.setAttribute("aria-checked", "true");
+      // show div
       desc.style.display = "block";
     }
   };

@@ -5,12 +5,13 @@ import exit from "../img/exit.svg";
 
 const Wrapper = styled.div`
   background-color: #fff;
-  height: 200px;
+  max-height: 350px;
   width: 100%;
   position: fixed;
   bottom: 0px;
   box-shadow: 0px 0px 0px #888, 0px -5px 5px rgba(0, 0, 0, 0.2);
   display: none;
+  overflow-y: scroll;
 `;
 
 const Exit = styled.img`
@@ -19,18 +20,27 @@ const Exit = styled.img`
 `;
 
 const Description = styled.p`
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto";
   font-weight: 500;
-  font-size: 1.2em;
-  background-color: pink;
+  font-style: normal;
+  font-size: 1em;
+  background-color: #fff;
+  padding: 4px;
+  line-height: 1.5;
+  border-radius: 2px;
   margin-left: 1em;
   margin-right: 2em;
 `;
-const Secondary = Description.extend``;
 
 const Difficulty = Description.extend``;
 
 const Role = Description.extend``;
+
+const Name = Description.extend`
+  font-family: "open sans", "sans-serif";
+  font-size: 1.2em;
+  color: rgba(0, 0, 255, 0.8);
+`;
 
 class SelectedHero extends React.Component {
   closeDesc = () => {
@@ -38,15 +48,14 @@ class SelectedHero extends React.Component {
     wrap.style.display = "none";
   };
   render() {
-    const { name, role, image, description, difficulty } = this.props.details;
-    console.log(difficulty);
     return (
       <Fragment>
         <Wrapper className={`desc`}>
           <Exit src={exit} onClick={this.closeDesc} />
-          <Role>rrrr</Role>
-          <Description>Description</Description>
-          <Difficulty>Difficulty</Difficulty>
+          <Name className={`name`} />
+          <Role className={`role`} />
+          <Description className={`description`} />
+          <Difficulty className={`diff`} />
         </Wrapper>
       </Fragment>
     );

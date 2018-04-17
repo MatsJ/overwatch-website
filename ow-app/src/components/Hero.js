@@ -19,11 +19,11 @@ const HeroName = styled.p`
 
 class Hero extends React.Component {
   render() {
-    const { name, image, role, description, difficulty } = this.props.details;
+    const { name, image } = this.props.details;
     return (
       <Fragment>
         <HeroImage src={image} alt={name} />
-        <HeroName ref={this.nameRef}>{name}</HeroName>
+        <HeroName>{name}</HeroName>
       </Fragment>
     );
   }
