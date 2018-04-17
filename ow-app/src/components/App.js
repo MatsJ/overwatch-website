@@ -72,14 +72,15 @@ class App extends Component {
   toggleActive = (event, data) => {
     this.setState({ isActive: !this.state.isActive });
     let el = event.currentTarget;
-    console.log("data", data.role);
     el.setAttribute("aria-checked", "true");
+    // scroll selected hero into view
     scrollIntoView(el, {
       align: {
         top: 0.06
       }
     });
 
+    // hero details
     const role = document.querySelector(".role");
     const description = document.querySelector(".description");
     const diff = document.querySelector(".diff");
