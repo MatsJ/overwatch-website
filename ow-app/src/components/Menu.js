@@ -70,7 +70,7 @@ class Menu extends React.Component {
         <Nav>
           <List>
             <ListItem>
-              <StyledLink onClick={this.props.loadHeroes} to="/">
+              <StyledLink onClick={this.props.loadHeroes} to="/heroes">
                 HEROES
               </StyledLink>
             </ListItem>
