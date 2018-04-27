@@ -80,6 +80,8 @@ class App extends Component {
       }
     });
 
+    // The DOM is touched here, so REDO this to a more React way
+    // especially getting the text content
     // hero details
     const role = document.querySelector(".role");
     const description = document.querySelector(".description");
