@@ -71,10 +71,11 @@ class App extends Component {
 
   toggleActive = (event, data) => {
     this.setState({ isActive: !this.state.isActive });
-    let el = event.currentTarget;
-    el.setAttribute("aria-checked", "true");
+    let e = event.currentTarget;
+    e.setAttribute("aria-checked", "true");
+
     // scroll selected hero into view
-    scrollIntoView(el, {
+    scrollIntoView(e, {
       align: {
         top: 0.06
       }
@@ -99,12 +100,12 @@ class App extends Component {
 
     // toggle aria-checked state
     const desc = document.querySelector(".desc");
-    if (el.getAttribute("aria-checked") === "true") {
-      el.setAttribute("aria-checked", "false");
+    if (e.getAttribute("aria-checked") === "true") {
+      e.setAttribute("aria-checked", "false");
       // hide div
       desc.style.display = "none";
     } else {
-      el.setAttribute("aria-checked", "true");
+      e.setAttribute("aria-checked", "true");
       // show div
       desc.style.display = "block";
     }
