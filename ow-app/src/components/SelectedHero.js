@@ -1,7 +1,7 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from 'react';
 //import PropTypes from "prop-types";
-import styled from "styled-components";
-import exit from "../img/exit.svg";
+import styled from 'styled-components';
+import exit from '../img/exit.svg';
 
 const Wrapper = styled.div`
   background-color: #fff;
@@ -17,10 +17,11 @@ const Wrapper = styled.div`
 const Exit = styled.img`
   margin: 10px;
   cursor: pointer;
+  float: right;
 `;
 
 const Description = styled.p`
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-weight: 500;
   font-style: normal;
   font-size: 1em;
@@ -37,15 +38,15 @@ const Difficulty = Description.extend``;
 const Role = Description.extend``;
 
 const Name = Description.extend`
-  font-family: "open sans", "sans-serif";
+  font-family: 'open sans', 'sans-serif';
   font-size: 1.2em;
   color: rgba(0, 0, 255, 0.8);
 `;
 
 class SelectedHero extends React.Component {
   closeDesc = () => {
-    const wrap = document.querySelector(".desc");
-    wrap.style.display = "none";
+    const wrap = document.querySelector('.desc');
+    wrap.style.display = 'none';
   };
   render() {
     return (
