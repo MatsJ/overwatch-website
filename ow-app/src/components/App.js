@@ -1,13 +1,13 @@
-import React, { Component, Fragment } from "react";
-import styled from "styled-components";
-import sampleHeroes from "../sampleHeroes";
-import scrollIntoView from "scroll-into-view";
+import React, { Component, Fragment } from 'react';
+import styled from 'styled-components';
+import sampleHeroes from '../sampleHeroes';
+import scrollIntoView from 'scroll-into-view';
 
 // components
-import Menu from "./Menu";
-import Header from "./Header";
-import Hero from "./Hero";
-import SelectedHero from "./SelectedHero";
+import Menu from './Menu';
+import Header from './Header';
+import Hero from './Hero';
+import SelectedHero from './SelectedHero';
 
 const Container = styled.div`
   display: grid;
@@ -72,7 +72,7 @@ class App extends Component {
   toggleActive = (event, data) => {
     this.setState({ isActive: !this.state.isActive });
     let e = event.currentTarget;
-    e.setAttribute("aria-checked", "true");
+    e.setAttribute('aria-checked', 'true');
 
     // scroll selected hero into view
     scrollIntoView(e, {
@@ -84,30 +84,30 @@ class App extends Component {
     // The DOM is touched here, so REDO this to a more React way
     // especially getting the text content
     // hero details
-    const role = document.querySelector(".role");
-    const description = document.querySelector(".description");
-    const diff = document.querySelector(".diff");
-    const name = document.querySelector(".name");
+    const role = document.querySelector('.role');
+    const description = document.querySelector('.description');
+    const diff = document.querySelector('.diff');
+    const name = document.querySelector('.name');
     name.textContent = `${data.name}`;
     role.textContent = `Role: ${data.role}`;
     description.textContent = `Description: ${data.description}`;
     diff.textContent = `Difficulty(1-3): ${data.difficulty}`;
 
-    const wrappers = document.querySelectorAll(".herowrap");
+    const wrappers = document.querySelectorAll('.herowrap');
     wrappers.forEach(wrappers => {
-      wrappers.setAttribute("aria-checked", "false");
+      wrappers.setAttribute('aria-checked', 'false');
     });
 
     // toggle aria-checked state
-    const desc = document.querySelector(".desc");
-    if (e.getAttribute("aria-checked") === "true") {
-      e.setAttribute("aria-checked", "false");
+    const desc = document.querySelector('.desc');
+    if (e.getAttribute('aria-checked') === 'true') {
+      e.setAttribute('aria-checked', 'false');
       // hide div
-      desc.style.display = "none";
+      desc.style.display = 'none';
     } else {
-      e.setAttribute("aria-checked", "true");
+      e.setAttribute('aria-checked', 'true');
       // show div
-      desc.style.display = "block";
+      desc.style.display = 'block';
     }
   };
 
@@ -130,6 +130,7 @@ class App extends Component {
                 index={key}
                 details={this.state.heroes[key]}
                 addHeroes={this.addHeroes}
+                className="ripple"
               />
             </Wrapper>
           ))}
